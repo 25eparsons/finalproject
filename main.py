@@ -6,5 +6,8 @@ print(f"The clock beside you reads 10:{time} PM.")
 print("You look outside the window, there is a dark forest.")
 print("\nOptions:")
 choice = ""
-while choice != leave 
-	choice = input("Leave the cabin or go back to sleep until morning?")
+while choice != "leave":
+	choice = input("Leave the cabin or go back to sleep until morning?\n")
+
+# cabin text
+print("You're back in the cabin")
