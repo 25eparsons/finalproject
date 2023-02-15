@@ -1,6 +1,6 @@
 print("Welcome to my game!")
 playername = input("What do you want you name to be?\n")
-print(f"\n\n\nOkay {playername},")
+print(f"\n\n\nGood luck {playername},")
 print("Welcome to")
 print('''
  _____  _             _____                       _   
