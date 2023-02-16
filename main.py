@@ -1,4 +1,4 @@
-from text import *
+from start import *
 
 print(first_cabin)
 choice = input(fcabin_choice)

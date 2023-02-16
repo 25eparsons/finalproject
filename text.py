@@ -1,3 +1,14 @@
+intructions = "Here are the instructions:\n"
+
+game_name = '''Welcome to
+
+ _____  _             _____                       _   
+|_   _|| |__    ___  |  ___|___   _ __  ___  ___ | |_ 
+  | |  | '_ \  / _ \ | |_  / _ \ | '__|/ _ \/ __|| __|
+  | |  | | | ||  __/ |  _|| (_) || |  |  __/\__ \| |_ 
+  |_|  |_| |_| \___| |_|   \___/ |_|   \___||___/ \__|
+		(Press enter to begin)\n'''
+
 first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\n"
 fcabin_choice = "What do you choose to do?\nStay until morning or leave the cabin.\n"
 fcabin_choice_opt = ["stay", "leave"]
