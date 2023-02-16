@@ -12,7 +12,7 @@ game_name = '''Welcome to
 first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\n"
 fcabin_choice = "What do you choose to do?\nStay until morning or leave the cabin.\n"
 fcabin_choice_opt = ["stay", "leave"]
-fcabin_stay = "You wake up the next morning.\n"
+fcabin_stay = "\nYou wake up the next morning.\n"
 fcabin_leave = "\nYou leave the cabin and find yourself in the forest."
 
 cabin = "You are back at the cabin"
