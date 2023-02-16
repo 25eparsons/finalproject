@@ -1,12 +1,11 @@
-first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\nWhat do you choose to do?"
-fcabin_choice = "Stay until morning or leave the cabin"
-fcabin_stay = "You wake up the next morning.\nWhat do you choose to do?"
-fcabin_leave = "You leave the cabin."
+first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\n"
+fcabin_choice = "What do you choose to do?\nStay until morning or leave the cabin.\n"
+fcabin_choice_opt = ["stay", "leave"]
+fcabin_stay = "You wake up the next morning.\n"
+fcabin_leave = "\nYou leave the cabin and find yourself in the forest."
 
 cabin = "You are back at the cabin"
 
-
-first_forest = "You are now in the forest."
 
 forest = "You are in a different part of the forest"
 
@@ -41,5 +40,3 @@ hatch_open_nokey = "It looks like you need to find a key."
 ladder_choice = "Climb down the ladder or leave and come back later?"
 ladder_down = "You begin to climb down the ladder.\nIt is starting to get very dark."
 ladder_leave = "You leave the area of the forest with the ladder."
-
-print(first_cabin)
