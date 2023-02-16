@@ -1,4 +1,4 @@
-intructions = "Here are the instructions:\n"
+instructions= "Here are the instructions:\n"
 
 game_name = '''Welcome to
 
