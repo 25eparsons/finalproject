@@ -9,6 +9,8 @@ game_name = '''Welcome to
   |_|  |_| |_| \___| |_|   \___/ |_|   \___||___/ \__|
 		(Press enter to begin)\n'''
 
+inventory = []
+
 first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\n"
 fcabin_choice = "What do you choose to do?\nStay until morning or leave the cabin.\n"
 fcabin_choice_opt = ["stay", "leave"]
@@ -24,12 +26,14 @@ forest_noise = "You hear a loud noise.\nYou look around but don't see anything."
 
 forest_mud = "You notice how muddy the ground is."
 
-forest_hunger = "You are starting to feel hungry.\nYou consider going back to the cabin to find food."
+forest_hunger = "You are starting to feel hungry and consider going back to the cabin to find food."
 
-forest_food = "You find a box in the forest.\nWhat do you choose to do?"
-food_choice = "Open the box or leave it alone?"
-food_open = "You open the box and find some food."
-food_leave = "You decide to leave it alone.\nYou dont want anything to do with it."
+forest_food = "\nYou find a box in the forest."
+food_choice = "\nDo you decide to open the box?\n"
+food_choice_opt = ["yes", "no"]
+food_open = "\nYou open the box and find some food."
+food_item = "food"
+food_leave = "\nYou decide not to open the box."
 
 forest_guard = "You see a guard standing in front of a large stone statue.\nWhat do you choose to do?"
 guard_choice = "Approach the guard or ignore him?"
@@ -37,6 +41,7 @@ guard_approach = "You approach the guard.\nHe says he will move if you give him 
 guard_approach_nofood = "You do not have any food.\nYou should keep looking."
 guard_approach_choice = "Do you give the guard food?"
 guard_approach_give = "You give the gaurd some of your food.\nHe moves aside revealing a key in the stone.\nYou pick up the key."
+key_item = "key"
 guard_approach_refuse = "You refuse to give the guard your food.\nHe wishes you a good day."
 guard_ignore = "You ignore the guard and leave that part of the forest"
 
