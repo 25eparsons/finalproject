@@ -1,5 +1,12 @@
-from start import *
+from text import *
+print("Welcome to my game!")
+print(instructions)
+playername = input("What do you want you name to be?\n")
+print(f"\nGood luck {playername},")
+input(game_name)
+print("\n\n\n")
 
+#Scenario for first time in cabin.
 print(first_cabin)
 choice = input(fcabin_choice)
 while choice != fcabin_choice_opt[1]:
