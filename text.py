@@ -12,9 +12,9 @@ game_name = '''Welcome to
 inventory = []
 
 first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\n"
-fcabin_choice = "What do you choose to do?\nStay until morning or leave the cabin.\n"
-fcabin_choice_opt = ["stay", "leave"]
-fcabin_stay = "\nYou wake up the next morning.\n"
+fcabin_choice = "Do you choose to leave the cabin?\n"
+fcabin_choice_opt = ["yes", "no"]
+fcabin_stay = "\nYou go to bed and wake up the next morning.\n"
 fcabin_leave = "\nYou leave the cabin and find yourself in the forest."
 
 cabin = "You are back at the cabin"
@@ -35,15 +35,17 @@ food_open = "\nYou open the box and find some food."
 food_item = "food"
 food_leave = "\nYou decide not to open the box."
 
-forest_guard = "You see a guard standing in front of a large stone statue.\nWhat do you choose to do?"
-guard_choice = "Approach the guard or ignore him?"
-guard_approach = "You approach the guard.\nHe says he will move if you give him food."
+forest_guard = "You see a guard standing in front of a large stone statue.\n"
+guard_choice = "Do you choose to approach the guard?\n"
+guard_choice_opt = ["yes", "no"]
+guard_approach = "\nYou approach the guard.\nHe says he will move if you give him your food."
 guard_approach_nofood = "You do not have any food.\nYou should keep looking."
-guard_approach_choice = "Do you give the guard food?"
-guard_approach_give = "You give the gaurd some of your food.\nHe moves aside revealing a key in the stone.\nYou pick up the key."
+guard_approach_choice = "\nDo you give the guard food?\n"
+guard_approach_choice_opt = ["yes", "no"]
+guard_approach_give = "You give the guard your food.\nHe moves aside revealing a key in the stone.\nYou pick up the key."
 key_item = "key"
 guard_approach_refuse = "You refuse to give the guard your food.\nHe wishes you a good day."
-guard_ignore = "You ignore the guard and leave that part of the forest"
+guard_ignore = "You ignore the guard and leave that part of the forest."
 
 forest_hatch = "You come across a large concrete pad with two metal doors laying on it.\nWhat do you choose to do?"
 hatch_choice = "Open the doors or come back later?"

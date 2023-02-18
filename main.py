@@ -4,7 +4,7 @@ from text import *
 
 print("Welcome to my game!")
 print(instructions)
-playername = input("What do you want you name to be?\n")
+playername = input("What do you want your name to be?\n")
 print(f"\nGood luck {playername},")
 input(game_name)
 print("\n\n\n")
@@ -12,7 +12,7 @@ print("\n\n\n")
 #Scenario for first time in cabin.
 print(first_cabin)
 choice = input(fcabin_choice)
-while choice != fcabin_choice_opt[1]:
+while choice != fcabin_choice_opt[0]:
 	if choice not in fcabin_choice_opt:
 		print(f'\nInvalid command\nOptions: "{fcabin_choice_opt[0]}" or "{fcabin_choice_opt[1]}"\n')
 	else:
@@ -41,3 +41,29 @@ if choice == food_choice_opt[0]:
 	print(f"Your inventory now contains {inventory}.")
 else:
 	print(food_leave)
+
+#scenario for guard interaction.
+print(forest_guard)
+choice = input(guard_choice)
+while choice not in guard_choice_opt:
+	print(f'\nInvalid command\nOptions: "{guard_choice_opt[0]}" or "{guard_choice_opt[1]}"\n')
+	choice = input(guard_choice)
+if choice == guard_choice_opt[0]:
+	print(guard_approach)
+	if "food" in inventory:
+		guard_choice = input(guard_approach_choice)
+		while guard_choice not in guard_approach_choice_opt:
+			print(f'\nInvalid command\nOptions: "{guard_approach_choice_opt[0]}" or "{guard_approach_choice_opt[1]}"\n')
+			choice = input(guard_approach_choice)
+		if guard_choice == guard_approach_choice_opt[0]:
+			print(guard_approach_give)
+			inventory.remove("food")
+			inventory.append(key_item)
+			print(f"Your inventory now contains {inventory}.")
+		else:
+			print(guard_approach_refuse)
+	else:
+		print(guard_approach_nofood)
+else:
+	print(guard_ignore)
+	
