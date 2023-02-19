@@ -67,3 +67,26 @@ if choice == guard_choice_opt[0]:
 else:
 	print(guard_ignore)
 	
+#scenario for hatch
+print(forest_hatch)
+choice = input(hatch_choice)
+while choice not in hatch_choice_opt:
+	print(f'\nInvalid command\nOptions: "{hatch_choice_opt[0]}" or "{hatch_choice_opt[1]}"\n')
+	choice = input(hatch_choice)
+if choice == hatch_choice_opt[0]:
+	print(hatch_open)
+	if "key" in inventory:
+		hatch_choice = input(hatch_open_keychoice)
+		while hatch_choice not in keychoice_opt:
+			print(f'\nInvalid command\nOptions: "{keychoice_opt[0]}" or "{keychoice_opt[1]}"\n')
+			hatch_choice = input(hatch_open_keychoice)
+		if hatch_choice == keychoice_opt[0]:
+			print(hatch_open_yes)
+			inventory.remove("key")
+		else:
+			print(hatch_open_no)
+	else:
+		print(hatch_open_nokey)
+else:
+	print(hatch_leave)
+			
