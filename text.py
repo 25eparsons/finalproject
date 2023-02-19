@@ -29,7 +29,7 @@ forest_mud = "You notice how muddy the ground is."
 forest_hunger = "You are starting to feel hungry and consider going back to the cabin to find food."
 
 forest_food = "\nYou find a box in the forest."
-food_choice = "\nDo you decide to open the box?\n"
+food_choice = "\nDo you choose to open the box?\n"
 food_choice_opt = ["yes", "no"]
 food_open = "\nYou open the box and find some food."
 food_item = "food"
@@ -42,18 +42,21 @@ guard_approach = "\nYou approach the guard.\nHe says he will move if you give hi
 guard_approach_nofood = "You do not have any food.\nYou should keep looking."
 guard_approach_choice = "\nDo you give the guard food?\n"
 guard_approach_choice_opt = ["yes", "no"]
-guard_approach_give = "You give the guard your food.\nHe moves aside revealing a key in the stone.\nYou pick up the key."
+guard_approach_give = "\nYou give the guard your food.\nHe moves aside revealing a key in the stone.\nYou pick up the key."
 key_item = "key"
 guard_approach_refuse = "You refuse to give the guard your food.\nHe wishes you a good day."
 guard_ignore = "You ignore the guard and leave that part of the forest."
 
-forest_hatch = "You come across a large concrete pad with two metal doors laying on it.\nWhat do you choose to do?"
-hatch_choice = "Open the doors or come back later?"
-hatch_open = "You try to open the doors but notice a lock preventing them form being opened."
-hatch_open_keychoice = "Do you want to use your key?"
-hatch_open_yes = "You use your key to unlock the doors\nWhen you open them, you see a ladder leading down into darkness.\nWhat do you choose to do?"
+forest_hatch = "\nYou come across a large concrete pad with two metal doors laying on it."
+hatch_choice = "\nDo you try to open the doors?\n"
+hatch_choice_opt = ["yes", "no"]
+hatch_open = "\nYou try to open the doors but notice a lock preventing them form being opened."
+hatch_open_keychoice = "Do you want to use your key?\n"
+keychoice_opt = ["yes", "no"]
+hatch_open_yes = "\nYou use your key to unlock the doors\nWhen you open them, you see a ladder leading down into darkness.\nWhat do you choose to do?"
 hatch_open_no = "You save your key for a lucky day."
 hatch_open_nokey = "It looks like you need to find a key."
+hatch_leave = "You don't try to open the doors and you leave that part of the forest"
 
 ladder_choice = "Climb down the ladder or leave and come back later?"
 ladder_down = "You begin to climb down the ladder.\nIt is starting to get very dark."
