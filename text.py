@@ -1,4 +1,32 @@
-instructions= "Here are the instructions:\n"
+instructions = '''Welcome to my game!
+Here are the instructions:
+
+** USe fullscreen terminal.
+
+** Use commands to complete objectives in 
+order to defeat the final boss.
+
+** Make sure to type commands correctly.
+
+** Have fun.
+
+(Press enter to move on)
+'''
+
+commands = '''Here are the commands:
+Enter Key - Next text scenario
+north - move north
+south - move south
+east - move east
+west - move west
+up - move up
+down - move down
+inventory - view your inventory
+use - use an item
+grab - pick up an item
+stay - stay where you are
+goals - view your objectives
+'''
 
 game_name = '''Welcome to
 
@@ -11,11 +39,10 @@ game_name = '''Welcome to
 
 inventory = []
 
-first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\n"
-fcabin_choice = "Do you choose to leave the cabin?\n"
-fcabin_choice_opt = ["yes", "no"]
-fcabin_stay = "\nYou go to bed and wake up the next morning.\n"
-fcabin_leave = "\nYou leave the cabin and find yourself in the forest."
+first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\nYou can exit to the north.\n"
+fcabin_choice_opt = ["north", "stay"]
+fcabin_stay = "\nYou stay in bed and wake up the next morning.\n"
+fcabin_leave = "\nYou go north and leave the cabin\nYou have entered the forest"
 
 cabin = "You are back at the cabin"
 

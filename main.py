@@ -2,16 +2,15 @@ import random
 
 from text import *
 
-print("Welcome to my game!")
-print(instructions)
+input(instructions)
+print(commands)
 playername = input("What do you want your name to be?\n")
 print(f"\nGood luck {playername},")
 input(game_name)
 print("\n\n\n")
 
 #Scenario for first time in cabin.
-print(first_cabin)
-choice = input(fcabin_choice)
+choice = input(first_cabin)
 while choice != fcabin_choice_opt[0]:
 	if choice not in fcabin_choice_opt:
 		print(f'\nInvalid command\nOptions: "{fcabin_choice_opt[0]}" or "{fcabin_choice_opt[1]}"\n')
