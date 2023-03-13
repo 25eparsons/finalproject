@@ -1,27 +1,3 @@
-inventory = []
-
-first_cabin = "You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\nYou can exit to the north.\n"
-fcabin_choice_opt = ["north", "stay"]
-fcabin_stay = "\nYou stay in bed and wake up the next morning.\n"
-fcabin_leave = "\nYou go north and leave the cabin\nYou have entered the forest"
-
-cabin = "You are back at the cabin"
-
-
-forest = "You are in a different part of the forest"
-
-forest_noise = "You hear a loud noise.\nYou look around but don't see anything."
-
-forest_mud = "You notice how muddy the ground is."
-
-forest_hunger = "You are starting to feel hungry and consider going back to the cabin to find food."
-
-forest_food = "\nYou find a box in the forest."
-food_choice = "\nDo you choose to open the box?\n"
-food_choice_opt = ["yes", "no"]
-food_open = "\nYou open the box and find some food."
-food_item = "food"
-food_leave = "\nYou decide not to open the box."
 
 forest_guard = "You see a guard standing in front of a large stone statue.\n"
 guard_choice = "Do you choose to approach the guard?\n"

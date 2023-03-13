@@ -20,6 +20,18 @@ def check_choice(choices):
 		choice = input("What is your choice?\n").lower().strip()
 	return choice
 
+#scenario for forest.
+def forest_scenario():
+	scenario = random.randint(1, 3)
+	if scenario == 1:
+		print("You hear a loud noise.\nYou look around but don't see anything.")
+	elif scenario == 2:
+		print("You notice how muddy the ground is.")
+	elif scenario == 3:
+		print("You are starting to feel hungry and consider going back to the cabin to find food.")
+	else:
+		print("You are in a different part of the forest")
+
 #Start Of Game
 
 #print out the instructions
@@ -69,35 +81,29 @@ input('''Welcome to
 print("\n\n\n")
 
 #Scenario for first time in cabin.
-print(first_cabin)
-choice = check_choice(fcabin_choice_opt)
-if choice == fcabin_choice_opt[0]:
-	print(fcabin_leave)
+print("You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\nYou can exit to the north.\n")
+choice = check_choice(["north", "stay"])
+if choice == "north":
+	print("\nYou go north and leave the cabin\nYou have entered the forest")
 else:
-	print(fcabin_stay)
+	print("\nYou stay in bed and wake up the next morning.\n")
 
-#scenario for forest.
-scenario = random.randint(1, 3)
-if scenario == 1:
-	print(forest_noise)
-elif scenario == 2:
-	print(forest_mud)
-elif scenario == 3:
-	print(forest_hunger)
+#forest scenario --- will get moved
+forest_scenario()
 
 #scenario for box of food.
 if got_food == False:
-	print(forest_food)
-	choice = check_choice(food_choice_opt)
-	if choice == food_choice_opt[0]:
-		print(food_open)
+	print("\nYou find a box in the forest.")
+	choice = check_choice(["yes", "no"])
+	if choice == "yes":
+		print("\nYou open the box and find some food.")
 		got_food = True
-		inventory.append(food_item)
+		inventory.append("Food")
 		show_inventory()
 	else:
-		print(leave)
+		print("\nYou decide not to open the box.")
 else:
-	print
+	print("You are back at the box where you found food")
 
 #scenario for guard interaction.
 print(forest_guard)
