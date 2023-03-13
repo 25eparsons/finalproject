@@ -2,22 +2,79 @@ import random
 
 from text import *
 
-input(instructions)
-print(commands)
+#important variables
+inventory = []
+got_food = False
+
+#function to show inventory
+def show_inventory():
+	print("Your inventory contains:")
+	for i in inventory:
+		print(f"-{i.title()}")
+
+#function to check choices against the possible choices
+def check_choice(choices):
+	choice = input("What is your choice?\n").lower().strip()
+	while choice not in choices:
+		print(f'\nInvalid command\nOptions: "{choices[0]}" or "{choices[1]}"')
+		choice = input("What is your choice?\n").lower().strip()
+	return choice
+
+#Start Of Game
+
+#print out the instructions
+input('''Welcome to my game!
+Here are the instructions:
+
+** Use fullscreen terminal.
+
+** Use commands to complete objectives in 
+order to defeat the final boss.
+
+** Only one word commands are accepted
+
+** Make sure to type commands correctly.
+
+** Have fun.
+
+** Press enter to move on.
+''')
+#print out the commands
+input('''Here are the commands:
+north - move north
+south - move south
+east - move east
+west - move west
+up - move up
+down - move down
+inventory - view your inventory
+use - use an item
+grab - pick up an item
+stay - stay where you are
+goals - view your objectives
+''')
+
+#get the player's name
 playername = input("What do you want your name to be?\n")
 print(f"\nGood luck {playername},")
-input(game_name)
+#print out the game title
+input('''Welcome to
+
+ _____  _             _____                       _   
+|_   _|| |__    ___  |  ___|___   _ __  ___  ___ | |_ 
+  | |  | '_ \  / _ \ | |_  / _ \ | '__|/ _ \/ __|| __|
+  | |  | | | ||  __/ |  _|| (_) || |  |  __/\__ \| |_ 
+  |_|  |_| |_| \___| |_|   \___/ |_|   \___||___/ \__|
+		(Press enter to begin)\n''')
 print("\n\n\n")
 
 #Scenario for first time in cabin.
-choice = input(first_cabin)
-while choice != fcabin_choice_opt[0]:
-	if choice not in fcabin_choice_opt:
-		print(f'\nInvalid command\nOptions: "{fcabin_choice_opt[0]}" or "{fcabin_choice_opt[1]}"\n')
-	else:
-		print(fcabin_stay)
-	choice = input(fcabin_choice)
-print(fcabin_leave)
+print(first_cabin)
+choice = check_choice(fcabin_choice_opt)
+if choice == fcabin_choice_opt[0]:
+	print(fcabin_leave)
+else:
+	print(fcabin_stay)
 
 #scenario for forest.
 scenario = random.randint(1, 3)
@@ -29,17 +86,18 @@ elif scenario == 3:
 	print(forest_hunger)
 
 #scenario for box of food.
-print(forest_food)
-choice = input(food_choice)
-while choice not in food_choice_opt:
-	print(f'\nInvalid command\nOptions: "{food_choice_opt[0]}" or "{food_choice_opt[1]}"')
-	choice = input(food_choice)
-if choice == food_choice_opt[0]:
-	print(food_open)
-	inventory.append(food_item)
-	print(f"Your inventory now contains {inventory}.")
+if got_food == False:
+	print(forest_food)
+	choice = check_choice(food_choice_opt)
+	if choice == food_choice_opt[0]:
+		print(food_open)
+		got_food = True
+		inventory.append(food_item)
+		show_inventory()
+	else:
+		print(leave)
 else:
-	print(food_leave)
+	print
 
 #scenario for guard interaction.
 print(forest_guard)
@@ -58,7 +116,7 @@ if choice == guard_choice_opt[0]:
 			print(guard_approach_give)
 			inventory.remove("food")
 			inventory.append(key_item)
-			print(f"Your inventory now contains {inventory}.")
+			show_inventory()
 		else:
 			print(guard_approach_refuse)
 	else:
@@ -88,4 +146,3 @@ if choice == hatch_choice_opt[0]:
 		print(hatch_open_nokey)
 else:
 	print(hatch_leave)
-			
