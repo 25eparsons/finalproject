@@ -5,6 +5,7 @@ from text import *
 #important variables
 inventory = []
 got_food = False
+guard_approached = False
 
 #function to show inventory
 def show_inventory():
@@ -103,32 +104,29 @@ if got_food == False:
 	else:
 		print("\nYou decide not to open the box.")
 else:
-	print("You are back at the box where you found food")
+	print("\nYou are back at the box where you found food")
 
 #scenario for guard interaction.
-print(forest_guard)
-choice = input(guard_choice)
-while choice not in guard_choice_opt:
-	print(f'\nInvalid command\nOptions: "{guard_choice_opt[0]}" or "{guard_choice_opt[1]}"\n')
-	choice = input(guard_choice)
-if choice == guard_choice_opt[0]:
-	print(guard_approach)
-	if "food" in inventory:
-		guard_choice = input(guard_approach_choice)
-		while guard_choice not in guard_approach_choice_opt:
-			print(f'\nInvalid command\nOptions: "{guard_approach_choice_opt[0]}" or "{guard_approach_choice_opt[1]}"\n')
-			choice = input(guard_approach_choice)
-		if guard_choice == guard_approach_choice_opt[0]:
-			print(guard_approach_give)
-			inventory.remove("food")
-			inventory.append(key_item)
-			show_inventory()
+if guard_approached == False:
+	print("You see a guard standing in front of a large stone statue.\n")
+	choice = check_choice(["yes", "no"])
+	if choice == "yes":
+		print("\nYou approach the guard.\nHe says he will move if you give him your food.")
+		if "Food" in inventory:
+			choice = check_choice(["yes", "no"])
+			if choice == "yes":
+				print("\nYou give the guard your food.\nHe dissapears revealing a key in the stone.\nYou pick up the key.")
+				inventory.remove("Food")
+				inventory.append("Key")
+				show_inventory()
+			else:
+				print("You refuse to give the guard your food.\nHe wishes you a good day.")
 		else:
-			print(guard_approach_refuse)
+			print("You do not have any food.\nYou should keep looking.")
 	else:
-		print(guard_approach_nofood)
+		print("You ignore the guard and leave that part of the forest.")
 else:
-	print(guard_ignore)
+	print("You are back where you found the guard")
 	
 #scenario for hatch
 print(forest_hatch)
