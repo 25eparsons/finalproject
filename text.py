@@ -1,16 +1,4 @@
 
-forest_guard = "You see a guard standing in front of a large stone statue.\n"
-guard_choice = "Do you choose to approach the guard?\n"
-guard_choice_opt = ["yes", "no"]
-guard_approach = "\nYou approach the guard.\nHe says he will move if you give him your food."
-guard_approach_nofood = "You do not have any food.\nYou should keep looking."
-guard_approach_choice = "\nDo you give the guard food?\n"
-guard_approach_choice_opt = ["yes", "no"]
-guard_approach_give = "\nYou give the guard your food.\nHe moves aside revealing a key in the stone.\nYou pick up the key."
-key_item = "key"
-guard_approach_refuse = "You refuse to give the guard your food.\nHe wishes you a good day."
-guard_ignore = "You ignore the guard and leave that part of the forest."
-
 forest_hatch = "\nYou come across a large concrete pad with two metal doors laying on it."
 hatch_choice = "\nDo you try to open the doors?\n"
 hatch_choice_opt = ["yes", "no"]
