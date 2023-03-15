@@ -1,5 +1,5 @@
 locations = {
-"cabin": [["north", "f6"], ["south", "random"]]
+"cabin": [["north", "f6"], ["south", "random"],["west", "house"]]
 }
 
 def check_choice(choices):
@@ -18,10 +18,12 @@ def movement(current):
 		choice_list.append(moves)
 		print("- " + moves)
 		num += 1
-	
+	print()
 	move = check_choice(choice_list)
-	moved_to = locations[cabin["move"]]
-	print(moved_to)
+	for i in locations[current]:
+		if i[0] == move:
+			return i[1]
+	
 
 new_space = movement("cabin")
 print(new_space)
