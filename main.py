@@ -6,12 +6,13 @@ from text import *
 inventory = []
 got_food = False
 guard_approached = False
+hatch_opened = False
 
 #function to show inventory
 def show_inventory():
 	print("Your inventory contains:")
 	for i in inventory:
-		print(f"-{i.title()}")
+		print(f"- {i.title()}")
 
 #function to check choices against the possible choices
 def check_choice(choices):
@@ -129,24 +130,21 @@ else:
 	print("You are back where you found the guard")
 	
 #scenario for hatch
-print(forest_hatch)
-choice = input(hatch_choice)
-while choice not in hatch_choice_opt:
-	print(f'\nInvalid command\nOptions: "{hatch_choice_opt[0]}" or "{hatch_choice_opt[1]}"\n')
-	choice = input(hatch_choice)
-if choice == hatch_choice_opt[0]:
-	print(hatch_open)
-	if "key" in inventory:
-		hatch_choice = input(hatch_open_keychoice)
-		while hatch_choice not in keychoice_opt:
-			print(f'\nInvalid command\nOptions: "{keychoice_opt[0]}" or "{keychoice_opt[1]}"\n')
-			hatch_choice = input(hatch_open_keychoice)
-		if hatch_choice == keychoice_opt[0]:
-			print(hatch_open_yes)
-			inventory.remove("key")
+if hatch_opened == False:
+	print("\nYou come across a large concrete pad with two metal doors laying on it.")
+	choice = check_choice(["yes", "no"])
+	if choice == "yes":
+		print("\nDo you try to open the doors?\n")
+		if "Key" in inventory:
+			print("\nYou try to open the doors but notice a lock preventing them from being opened.")
+			choice = check_choice(["yes", "no"])
+			if choice == "yes":
+				print("\nYou use your key to unlock the doors\nWhen you open them, you see a ladder leading down into darkness.\nWhat do you choose to do?")
+				inventory.remove("Key")
+				hatch_opened = True
+			else:
+				print("You save your key for a lucky day.")
 		else:
-			print(hatch_open_no)
+			print("It looks like you need to find a key.")
 	else:
-		print(hatch_open_nokey)
-else:
-	print(hatch_leave)
+		print("You don't try to open the doors and you leave that part of the forest")
