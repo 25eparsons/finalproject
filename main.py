@@ -23,7 +23,7 @@ locations = {
 "hatch": [["south", "f4"],["west", "f2"]],
 }
 
-#funciton for movement
+#function for movement
 def movement(current):
 	print("\nYou can move:")
 	num = 0
@@ -46,20 +46,20 @@ def show_inventory():
 		print(f"- {i.title()}")
 
 #function to check choices against the possible choices
-def check_choice(choices):
-	print('Options:')
+def check_choice(choices, text):
+	print(f'{text}Options:')
 	num = 0
 	for i in choices:
 		print(f"- {choices[num]}")
 		num += 1
-	choice = input("\nWhat is your choice?\n").lower().strip()
+	choice = input('\n').lower().strip()
 	while choice not in choices:
 		print('\nInvalid command\nOptions:')
 		num = 0
 		for i in choices:
 			print(f"- {choices[num]}")
 			num += 1
-		choice = input("What is your choice?\n").lower().strip()
+		choice = input('').lower().strip()
 	return choice
 
 def check(choices):
@@ -77,7 +77,7 @@ def check(choices):
 def cabin(started):
 	if started == 0:
 		print("You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\nYou can exit to the north.")
-		choice = check_choice(["north", "stay"])
+		choice = check_choice(["north", "stay"], "\nWhat do you want to do?\n")
 		if choice == "north":
 			print("\nYou go north and leave the cabin\nYou have entered the forest")
 			started = 1
@@ -104,7 +104,7 @@ def forest_scenario():
 def food(got_food):
 	if got_food == 0:
 		print("\nYou find a box in the forest.")
-		choice = check_choice(["yes", "no"])
+		choice = check_choice(["yes", "no"], "\nDo you want to open it?\n")
 		if choice == "yes":
 			print("\nYou open the box and find some food.")
 			got_food = 1
@@ -118,14 +118,14 @@ def food(got_food):
 #scenario for guard interaction.
 def guard(guard_approached):
 	if guard_approached == 0:
-		print("You see a guard standing in front of a large stone statue.\n")
-		choice = check_choice(["yes", "no"])
+		print("\nYou see a guard standing in front of a large stone statue.")
+		choice = check_choice(["yes", "no"], "\nDo you want to talk to the guard?\n")
 		if choice == "yes":
 			print("\nYou approach the guard.\nHe says he will move if you give him your food.")
 			if "Food" in inventory:
-				choice = check_choice(["yes", "no"])
+				choice = check_choice(["yes", "no"], "\nDo you give the guard your food?\n")
 				if choice == "yes":
-					print("\nYou give the guard your food.\nHe dissapears revealing a key in the stone.\nYou pick up the key.")
+					print("\nYou give the guard your food.\nHe disappears revealing a key in the stone.\nYou pick up the key.")
 					inventory.remove("Food")
 					inventory.append("Key")
 					show_inventory()
@@ -142,14 +142,13 @@ def guard(guard_approached):
 def hatch(hatch_opened):	
 	if hatch_opened == 0:
 		print("\nYou come across a large concrete pad with two metal doors laying on it.")
-		choice = check_choice(["yes", "no"])
+		choice = check_choice(["yes", "no"], "\nDo you try to open the doors?\n")
 		if choice == "yes":
-			print("\nDo you try to open the doors?\n")
 			if "Key" in inventory:
 				print("\nYou try to open the doors but notice a lock preventing them from being opened.")
-				choice = check_choice(["yes", "no"])
+				choice = check_choice(["yes", "no"], "\nDo you want to use your key?\n")
 				if choice == "yes":
-					print("\nYou use your key to unlock the doors\nWhen you open them, you see a ladder leading down into darkness.\nWhat do you choose to do?")
+					print("\nYou use your key to unlock the doors\nWhen you open them, you see a ladder leading down into darkness.")
 					inventory.remove("Key")
 					hatch_opened = 1
 					complete = True
@@ -210,9 +209,8 @@ input('''Welcome to
 print("\n\n\n")
 
 
-#main game loop
 print("You wake up in a cabin bed, you don't know how you got here.\nThe clock beside you reads 10:30 PM.\nYou look outside the window, there is a dark forest.\nYou can exit to the north.\n")
-choice = check_choice(["north", "stay"])
+choice = check_choice(["north", "stay"], "\nWhat do you want to do?\n")
 if choice == "north":
 	print("\nYou go north and leave the cabin\nYou have entered the forest")
 	current = "f6"
@@ -221,6 +219,11 @@ else:
 	current = "cabin"
 started = 1
 
+
+complete = True
+
+
+#main game loop
 while complete != True:
 	move = movement(current)
 	if move == "food":
@@ -239,4 +242,22 @@ while complete != True:
 		forest_scenario()
 		current = move
 
-print("\n\n\nYou finished the game!")
+#Finish message
+print('''
+   _____                                  _           _         _    _                    
+  / ____|                                | |         | |       | |  (_)                   
+ | |      ___   _ __    __ _  _ __  __ _ | |_  _   _ | |  __ _ | |_  _   ___   _ __   ___ 
+ | |     / _ \ | '_ \  / _` || '__|/ _` || __|| | | || | / _` || __|| | / _ \ | '_ \ / __|
+ | |____| (_) || | | || (_| || |  | (_| || |_ | |_| || || (_| || |_ | || (_) || | | |\__ \ 
+  \_____|\___/ |_| |_| \__, ||_|   \__,_| \__| \__,_||_| \__,_| \__||_| \___/ |_| |_||___/
+                        __/ |                                                             
+                       |___/                                                              
+''')
+print('''
+		 __   __ ___   _   _  __        __ ___   _   _   _ 
+		 \ \ / // _ \ | | | | \ \      / // _ \ | \ | | | |
+		  \ V /| | | || | | |  \ \ /\ / /| | | ||  \| | | |
+		   | | | |_| || |_| |   \ V  V / | |_| || |\  | |_|
+		   |_|  \___/  \___/     \_/\_/   \___/ |_| \_| (_)
+                                                   
+''')
