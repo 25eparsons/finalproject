@@ -1,11 +1,16 @@
 locations = {
-"cabin": [["north", "f6"], ["south", "random"],["west", "house"]]
+"cabin": [["north", "f6"], ["south", "random"],["west", "house"]],
+"f6": [["south", "cabin"]]
 }
 
 def check_choice(choices):
 	choice = input("What is your choice?\n").lower().strip()
 	while choice not in choices:
-		print(f'\nInvalid command\nOptions: "{choices[0]}" or "{choices[1]}"')
+		print(f'\nInvalid command\nOptions:')
+		num = 0
+		for i in choices:
+			print(f"- {choices[num]}")
+			num += 1
 		choice = input("What is your choice?\n").lower().strip()
 	return choice
 
@@ -25,5 +30,5 @@ def movement(current):
 			return i[1]
 	
 
-new_space = movement("cabin")
+new_space = movement("f6")
 print(new_space)
