@@ -220,9 +220,6 @@ else:
 started = 1
 
 
-complete = True
-
-
 #main game loop
 while complete != True:
 	move = movement(current)
