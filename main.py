@@ -84,7 +84,7 @@ def cabin(started):
 		else:
 			print("\nYou stay in bed and wake up the next morning.\n")
 	else:
-		print("You are back at the cabin.")
+		print("\nYou are back at the cabin.")
 
 #scenario for forest.
 def forest_scenario():
@@ -107,9 +107,10 @@ def food(got_food):
 		choice = check_choice(["yes", "no"], "\nDo you want to open it?\n")
 		if choice == "yes":
 			print("\nYou open the box and find some food.")
-			got_food = 1
 			inventory.append("Food")
 			show_inventory()
+			got_food = 1
+			return got_food
 		else:
 			print("\nYou decide not to open the box.")
 	else:
@@ -129,6 +130,8 @@ def guard(guard_approached):
 					inventory.remove("Food")
 					inventory.append("Key")
 					show_inventory()
+					guard_approached = 1
+					return guard_approached
 				else:
 					print("You refuse to give the guard your food.\nHe wishes you a good day.")
 			else:
@@ -136,7 +139,7 @@ def guard(guard_approached):
 		else:
 			print("You ignore the guard and leave that part of the forest.")
 	else:
-		print("You are back where you found the guard")
+		print("\nYou are back where you found the guard")
 	
 #scenario for hatch
 def hatch(hatch_opened):	
@@ -151,14 +154,15 @@ def hatch(hatch_opened):
 					print("\nYou use your key to unlock the doors\nWhen you open them, you see a ladder leading down into darkness.")
 					inventory.remove("Key")
 					hatch_opened = 1
-					complete = True
-					return complete
+					return hatch_opened
 				else:
-					print("You save your key for a lucky day.")
+					print("\nYou save your key for a lucky day.")
 			else:
-				print("It looks like you need to find a key.")
+				print("\nIt looks like you need to find a key.")
 		else:
-			print("You don't try to open the doors and you leave that part of the forest")
+			print("\nYou don't try to open the doors and you leave that part of the forest")
+	else:
+		print("You are back at the hatch.")
 
 #Start Of Game
 
@@ -224,13 +228,13 @@ started = 1
 while complete != True:
 	move = movement(current)
 	if move == "food":
-		food(got_food)
+		got_food = food(got_food)
 		current = move
 	elif move == "cabin":
 		cabin(started)
 		current = move
 	elif move == "key":
-		guard(guard_approached)
+		guard_approached = guard(guard_approached)
 		current = move
 	elif move == "hatch":
 		complete = hatch(hatch_opened)
