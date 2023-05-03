@@ -1,6 +1,6 @@
 import pickle
 
-start = '''Welcome to
+start = '''\nWelcome to
  _____  _             _____                       _   
 |_   _|| |__    ___  |  ___|___   _ __  ___  ___ | |_ 
   | |  | '_ \  / _ \ | |_  / _ \ | '__|/ _ \/ __|| __|
@@ -30,7 +30,7 @@ locations = {
 }
 
 descriptions = {
-"cabin": "You are in a small cabin. There is a table with a map and a lamp on it.",
+"cabin": "You are in a small cabin. There is a table with a map and a flashlight on it.",
 "f6": "You are in a forest. There are trees all around you.",
 "food": "You found a stash of canned food. It looks like it's been here for a while.",
 "f5": "You found an abandoned campsite. There is a tent and a fire pit.",
@@ -41,6 +41,7 @@ descriptions = {
 "f2": "You are in a dense forest. It's hard to see where you're going.",
 "hatch": "You found a metal hatch. There is a padlock on it."
 }
+
 
 class Player():
 	'''A player object'''
@@ -93,6 +94,37 @@ class Player():
 				num += 1
 			choice = input('').lower().strip()
 		return choice
+
+items = {
+"cabin": ["flashlight"],
+"f6": [],
+"food": ["can of food"],
+"f5": [],
+"key": ["key"],
+"f3": ["rock"],
+"f4": [],
+"f1": [],
+"f2": [],
+"hatch": [],
+}
+
+class Room():
+	'''A Room Object'''
+	def __init__(self):
+		self.__items = []
+
+	def __str__(self):
+		if self.__items:
+			print(f"There is a {self.__items} here\nWould you like to pick it up")
+
+	@property
+	def items(self):
+		return self.__items
+
+	@setter.items
+	def items(self):
+		if self.__items:
+
 
 
 def save(player):
