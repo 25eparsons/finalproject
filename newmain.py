@@ -1,6 +1,3 @@
-
-
-
 import pickle
 
 start = '''\nWelcome to
@@ -110,11 +107,19 @@ class Player():
 			if items[current]:
 				print(f"There is a {items[current]} here.")
 		except:
-			print("There is nothing here.")
-
+			pass
 
 	def grab(self, current):
-		pass 										#I AM HERE RIGHT NOW
+		try:
+			if items[current]:
+				self.inventory.append(items[current])
+			print(f"You pick up {items[current]}.\n")
+			del items[current]
+			print("Inventory:")
+			for i in self.inventory:
+				print(f"- {i.title()}")
+		except:
+			print("There is nothing here to pick up.")
 
 def save(player):
 	with open("save_game.txt", "wb") as file:
@@ -125,6 +130,7 @@ def load():
 	with open("save_game.txt", "rb") as file:
 		player = pickle.load(file)
 		print("Game Loaded!")
+		print(descriptions[player.location])
 	return player
 
 def quit():
@@ -133,7 +139,7 @@ def quit():
 player = Player()
 choice = None
 while choice != "quit":
-	choice = player.check_choice(["quit", "move", "save", "load", "grab"])
+	choice = player.check_choice(["quit", "move", "save", "load", "grab", "use"])
 	if choice == "quit":
 		quit()
 	elif choice == "move":
@@ -144,4 +150,6 @@ while choice != "quit":
 	elif choice == "load":
 		player = load()
 	elif choice == "grab":
-		pass
+		player.grab(player.location)
+	elif choice == "use":
+		print("This feature has not been implemented yet!")
