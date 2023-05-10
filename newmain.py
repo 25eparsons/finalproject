@@ -17,38 +17,52 @@ move - display movement options
 		(Press enter to begin)\n\n'''
 
 locations = {
-"cabin": [["north", "f6"]],
-"f6": [["north", "f3"],["south", "cabin"],["east", "food"],["west", "f5"]],  
-"food": [["north", "f4"],["west", "f6"]],
-"f5": [["north", "key"],["east", "f6"]],
-"key": [["north", "f1"],["south", "f5"],["east", "f3"]],
-"f3": [["north", "f2"],["south", "f6"],["east", "f4"],["west", "key"]],
-"f4": [["north", "hatch"],["south", "food"],["west", "f3"]],
-"f1": [["south", "key"],["east", "f2"]],
-"f2": [["south", "f3"],["east", "hatch"],["west", "f1"]],
-"hatch": [["south", "f4"],["west", "f2"],["down", "bunker"]],
+"cabin": [["north", "forest"]],
+"forest": [["north", "clear"],["south", "cabin"],["west", "camp"]],  
+"camp": [["east", "forest"]],
+"clear": [["north", "deer"],["east", "noise"],["south", "forest"]],
+"key": [["north", "swamp"]],
+"swamp": [["south", "key"],["east", "deer"]],
+"deer": [["south", "clear"],["west", "swamp"]],
+"noise": [["south", "food"],["west", "clear"]],
+"food": [["north", "noise"],["east", "feet"]],
+"feet": [["north", "dark"],["west", "food"]],
+"dark": [["south", "feet"],["north", "dog"]],
+"dog": [["south", "dark"],["west", "hatch"]],
+"hatch": [["west", "dog"],["down", "bunker"]],
+"bunker": [["up", "hatch"]]
 }
 
 descriptions = {
 "cabin": "You are in a small cabin. There is a table with a map and a flashlight on it.",
-"f6": "You are in a forest. There are trees all around you.",
-"food": "You found a stash of canned food. It looks like it's been here for a while.",
-"f5": "You found an abandoned campsite. There is a tent and a fire pit.",
+"forest": "You are in a forest. There are trees all around you.",
+"camp": "You found an abandoned campsite. There is a tent and a fire pit.",
+"clear": "You are in a clearing. There are some bushes and a pile of rocks.",
 "key": "You found a key on the ground.",
-"f3": "You are in a clearing. There are some bushes and a pile of rocks.",
-"f4": "You are in a forest. You think you hear a machine.",
-"f1": "You are in a swamp. The ground is wet and slippery.",
-"f2": "You are in a dense forest. It's hard to see where you're going.",
+"swamp": "You are in a swamp. The ground is wet and slippery.",
+"deer": "You found a watering hole. There are some deer nearby.",
+"noise": "You are in a forest. You think you hear a machine.",
+"food": "You found a stash of canned food. It looks like it's been here for a while.",
+"feet": "You hear some footsteps. There might be someone following you.",
+"dark": "You are in a dense forest. It's so dark it's hard to see where you're going.",
+"dog": "You found an old house. Before you go inside a dog comes out.",
 "hatch": "You found a metal hatch. There is a padlock on it.",
-"bunker": "You are in the bunker"
+"bunker": "You are in the bunker."
 }
 
-items = {
+grab_items = {
 "cabin": "flashlight",
 "food": "can of food",
 "key": "key",
-"f3": "rock",
-"bunker": "trophy"
+"clear": "rock",
+"bunker": "trophy",
+"dog": "dog"
+}
+
+use_items = {
+"hatch": "key",
+"dark": "flashlight",
+"deer": "rock",
 }
 
 
@@ -61,7 +75,7 @@ class Player():
 		print(f"Good luck {name},")
 		input(start)
 		print(descriptions[self.__location])
-		print(f"There is a {items[self.__location]} here.")
+		print(f"There is a {grab_items[self.__location]} here.")
 
 	@property
 	def location(self):
@@ -104,22 +118,43 @@ class Player():
 	
 	def check_item(self, current):
 		try:
-			if items[current]:
-				print(f"There is a {items[current]} here.")
+			if grab_items[current]:
+				print(f"There is a {grab_items[current]} here.")
 		except:
 			pass
 
 	def grab(self, current):
 		try:
-			if items[current]:
-				self.inventory.append(items[current])
-			print(f"You pick up {items[current]}.\n")
-			del items[current]
+			if grab_items[current]:
+				self.inventory.append(grab_items[current])
+			print(f"You pick up {grab_items[current]}.\n")
+			del grab_items[current]
 			print("Inventory:")
 			for i in self.inventory:
 				print(f"- {i.title()}")
 		except:
 			print("There is nothing here to pick up.")
+
+	def use(self, current):
+		if self.inventory != []:
+			try:
+				print("\nWhat would you like to use?")
+				choice = self.check_choice(self.inventory)
+				if choice == use_items[current]:
+					self.inventory.remove(use_items[current])
+					print(f"You used {use_items[current]}.")
+					if self.inventory != []:
+						print("Inventory:")
+						for i in self.inventory:
+							print(f"- {i.title()}")
+					else:
+						print("Inventory is empty.")
+				else:
+					print(f"You cannot use {choice}.")
+			except:
+				print("You cannot use that here.")
+		else:
+			print("Inventory is empty.")
 
 def save(player):
 	with open("save_game.txt", "wb") as file:
@@ -152,4 +187,4 @@ while choice != "quit":
 	elif choice == "grab":
 		player.grab(player.location)
 	elif choice == "use":
-		print("This feature has not been implemented yet!")
+		player.use(player.location)
