@@ -65,7 +65,6 @@ use_items = {
 "deer": "rock",
 }
 
-
 class Player():
 	'''A player object'''
 	def __init__(self):
@@ -84,6 +83,15 @@ class Player():
 	@location.setter
 	def location(self, new_location):
 		self.__location = new_location
+
+	def dark(self):
+		if "flashlight" in self.inventory:
+			self.use(self.__location)
+		else:
+			print("You get lost and find yourself at an abandoned campsite.")
+			self.check_item("camp")
+			self.__location = "camp"
+		return self.location
 
 	def movement(self, current):
 		num = 0
@@ -148,13 +156,14 @@ class Player():
 						for i in self.inventory:
 							print(f"- {i.title()}")
 					else:
-						print("Inventory is empty.")
+						print("Inventory is now empty.")
 				else:
 					print(f"You cannot use {choice}.")
 			except:
 				print("You cannot use that here.")
 		else:
 			print("Inventory is empty.")
+		return current
 
 def save(player):
 	with open("save_game.txt", "wb") as file:
@@ -180,6 +189,8 @@ while choice != "quit":
 	elif choice == "move":
 		player.location = player.movement(player.location)
 		player.check_item(player.location)
+		if player.location == "dark":
+			player.dark()
 	elif choice == "save":
 		save(player)
 	elif choice == "load":
